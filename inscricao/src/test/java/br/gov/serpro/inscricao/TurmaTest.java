@@ -29,8 +29,12 @@ public class TurmaTest {
 		turma.matricular("Aluno Duplicado");
 	}
 
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void falhaAoTentarMatricularAlunoNaTurmaCheia() {
+		for( int i = 1; i<=5 ; i++ ) {
+			turma.matricular("Aluno " + i);
+		}
+		turma.matricular("Aluno 6");
 	}
 
 }

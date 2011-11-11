@@ -23,6 +23,12 @@ public class Turma {
 	
 	public void matricular(String aluno) {
 		if( estaMatriculado(aluno) ) {
+			logger.info(bundle.getString("aluno.ja.matriculado", aluno));
+			throw new RuntimeException();
+		}
+		
+		if( alunosMatriculados.size()>=5 ) {
+			logger.info(bundle.getString("turma.ja.completa", aluno));
 			throw new RuntimeException();
 		}
 		
