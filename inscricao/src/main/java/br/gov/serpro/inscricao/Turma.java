@@ -8,9 +8,12 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
+import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
+import br.gov.frameworkdemoiselle.stereotype.Controller;
 import br.gov.frameworkdemoiselle.util.ResourceBundle;
 //import org.slf4j.LoggerFactory;
 
+@Controller   // para poder utilizar @ExceptionHandler
 public class Turma {
 
 	private List<String> alunosMatriculados = new ArrayList<String>();
@@ -40,6 +43,11 @@ public class Turma {
 
 	public boolean estaMatriculado(String aluno) {
 		return alunosMatriculados.contains(aluno);
+	}
+	
+	@ExceptionHandler     // deve anotar a classe com @Controller
+	public void tratar(RuntimeException e) {
+		logger.warn("matricula.erro");
 	}
 
 }
