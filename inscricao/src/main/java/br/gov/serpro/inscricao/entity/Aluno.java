@@ -1,16 +1,33 @@
 package br.gov.serpro.inscricao.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Aluno {
+	
+	@Id
+	@GeneratedValue
+	private Integer matricula;
+
 	private String nome;
 
 	public Aluno() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Aluno(String nome) {
 		this.nome = nome;
 	}
 	
+	public Integer getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Integer matricula) {
+		this.matricula = matricula;
+	}
+
 	public String getNome() {
 		return nome;
 	}
