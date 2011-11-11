@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
 import br.gov.frameworkdemoiselle.stereotype.Controller;
 import br.gov.frameworkdemoiselle.util.ResourceBundle;
+import br.gov.serpro.inscricao.config.InscricaoConfig;
 import br.gov.serpro.inscricao.exception.TurmaException;
 
 @Controller   // para poder utilizar @ExceptionHandler
@@ -23,6 +24,9 @@ public class Turma {
 	@Inject
 	private ResourceBundle bundle;
 	
+	@Inject
+	private InscricaoConfig config;
+	
 	public void matricular(String aluno) {
 		if( estaMatriculado(aluno) ) {
 			logger.info(bundle.getString("aluno.ja.matriculado", aluno));
@@ -30,7 +34,8 @@ public class Turma {
 			throw new TurmaException();
 		}
 		
-		if( alunosMatriculados.size()>=5 ) {
+		//if( alunosMatriculados.size() >= 5 ) {
+		if( alunosMatriculados.size() >= config.getCapacidadeTurma() ) {
 			logger.info(bundle.getString("turma.ja.completa", aluno));
 			//throw new RuntimeException();
 			throw new TurmaException();
