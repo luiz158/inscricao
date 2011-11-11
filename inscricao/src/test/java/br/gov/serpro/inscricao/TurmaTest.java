@@ -5,6 +5,7 @@ import junit.framework.Assert;
 import org.junit.Test;
 
 public class TurmaTest {
+	
 	@Test
 	public void matricularAlunoComSucesso() {
 		Turma turma = new Turma();
