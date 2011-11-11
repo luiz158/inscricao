@@ -35,7 +35,8 @@ public class TurmaBC {
 	//private EntityManager em;   // obs.: pode ser injectado em EM devido à extensão demoiselle-jpa
 	
 	@Inject
-	AlunoDAO alunoDAO;
+	//AlunoDAO alunoDAO;
+	AlunoBC alunoBC;
 	
 	@Transactional
 	public void matricular(Aluno aluno) {
@@ -56,7 +57,7 @@ public class TurmaBC {
 		//alunosMatriculados.add(aluno);
 		//em.getTransaction().begin();
 		//em.persist(aluno);
-		alunoDAO.insert(aluno);
+		alunoBC.insert(aluno);
 		//em.getTransaction().commit();
 		
 		//System.out.println("Aluno matriculado com sucesso!");
@@ -78,7 +79,7 @@ public class TurmaBC {
 	
 	public List<Aluno> obterAlunosMatriculados() {
 		//return em.createQuery("select a from Aluno a").getResultList();
-		return alunoDAO.findAll();
+		return alunoBC.findAll();
 	}
 
 }
