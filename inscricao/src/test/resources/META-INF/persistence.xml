@@ -6,12 +6,16 @@
 
 	<persistence-unit name="inscricao-ds"
 		transaction-type="RESOURCE_LOCAL">
-		<non-jta-data-source>java:/DefaultDS</non-jta-data-source>
 		<class>br.gov.serpro.inscricao.entity.Aluno</class>
 		<properties>
-			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="false" />
-			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:." />
+			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
 		</properties>
 	</persistence-unit>
 
