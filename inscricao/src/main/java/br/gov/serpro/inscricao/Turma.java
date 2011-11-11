@@ -2,11 +2,13 @@ package br.gov.serpro.inscricao;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
+//import java.util.ResourceBundle;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
+
+import br.gov.frameworkdemoiselle.util.ResourceBundle;
 //import org.slf4j.LoggerFactory;
 
 public class Turma {
@@ -23,7 +25,7 @@ public class Turma {
 		alunosMatriculados.add(aluno);
 		//System.out.println("Aluno matriculado com sucesso!");
 		//logger.info("Aluno matriculado com sucesso!");
-		logger.info(bundle.getString("matricula.sucesso"));
+		logger.info(bundle.getString("matricula.sucesso", aluno));
 	}
 
 	public boolean estaMatriculado(String aluno) {
