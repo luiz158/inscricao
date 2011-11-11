@@ -47,7 +47,8 @@ public class Turma {
 	
 	@ExceptionHandler     // deve anotar a classe com @Controller
 	public void tratar(RuntimeException e) {
-		logger.warn("matricula.erro");
+		logger.warn(bundle.getString("matricula.erro"));
+		throw e;
 	}
 
 }
