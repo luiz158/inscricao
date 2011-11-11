@@ -4,5 +4,6 @@
 	<alternatives>
 		<class>br.gov.frameworkdemoiselle.transaction.JPATransaction</class>
 		<class>br.gov.serpro.inscricao.security.Autorizador</class>
+		<class>br.gov.serpro.inscricao.security.Autenticador</class>
 	</alternatives>
 </beans>

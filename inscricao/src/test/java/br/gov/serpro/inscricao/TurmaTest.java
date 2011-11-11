@@ -4,10 +4,12 @@ import javax.inject.Inject;
 
 import junit.framework.Assert;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+import br.gov.frameworkdemoiselle.security.SecurityContext;
 import br.gov.serpro.inscricao.business.TurmaBC;
 import br.gov.serpro.inscricao.entity.Aluno;
 import br.gov.serpro.inscricao.exception.TurmaException;
@@ -17,6 +19,14 @@ public class TurmaTest {
 	
 	@Inject
 	TurmaBC turmaBC;
+	
+	@Inject
+	SecurityContext securityContext;
+	
+	@Before
+	public void setUp() {
+		securityContext.login();
+	}
 	
 	@Test
 	public void matricularAlunoComSucesso() {
