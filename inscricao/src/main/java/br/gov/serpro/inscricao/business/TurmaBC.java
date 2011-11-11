@@ -7,13 +7,13 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 
 import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
+import br.gov.frameworkdemoiselle.security.RequiredPermission;
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.ResourceBundle;
 import br.gov.serpro.inscricao.config.InscricaoConfig;
 import br.gov.serpro.inscricao.entity.Aluno;
 import br.gov.serpro.inscricao.exception.TurmaException;
-import br.gov.serpro.inscricao.persistence.AlunoDAO;
 
 //@Controller   // para poder utilizar @ExceptionHandler
 @BusinessController   
@@ -39,6 +39,7 @@ public class TurmaBC {
 	AlunoBC alunoBC;
 	
 	@Transactional
+	@RequiredPermission(resource="turma", operation="matricular")
 	public void matricular(Aluno aluno) {
 		if( estaMatriculado(aluno) ) {
 			logger.info(bundle.getString("aluno.ja.matriculado", aluno.getNome()));
@@ -65,6 +66,7 @@ public class TurmaBC {
 		logger.info(bundle.getString("matricula.sucesso", aluno.getNome()));
 	}
 	
+	@RequiredPermission(resource="turma", operation="consultar")
 	public boolean estaMatriculado(Aluno aluno) {
 		//return alunosMatriculados.contains(aluno);
 		return obterAlunosMatriculados().contains(aluno);
