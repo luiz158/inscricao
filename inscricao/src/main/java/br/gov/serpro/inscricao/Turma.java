@@ -11,12 +11,14 @@ import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
 import br.gov.frameworkdemoiselle.stereotype.Controller;
 import br.gov.frameworkdemoiselle.util.ResourceBundle;
 import br.gov.serpro.inscricao.config.InscricaoConfig;
+import br.gov.serpro.inscricao.entity.Aluno;
 import br.gov.serpro.inscricao.exception.TurmaException;
 
 @Controller   // para poder utilizar @ExceptionHandler
 public class Turma {
 
-	private List<String> alunosMatriculados = new ArrayList<String>();
+	//private List<String> alunosMatriculados = new ArrayList<String>();
+	private List<Aluno> alunosMatriculados = new ArrayList<Aluno>();
 	
 	@Inject
 	private Logger logger; // = LoggerFactory.getLogger(Turma.class);
@@ -27,16 +29,16 @@ public class Turma {
 	@Inject
 	private InscricaoConfig config;
 	
-	public void matricular(String aluno) {
+	public void matricular(Aluno aluno) {
 		if( estaMatriculado(aluno) ) {
-			logger.info(bundle.getString("aluno.ja.matriculado", aluno));
+			logger.info(bundle.getString("aluno.ja.matriculado", aluno.getNome()));
 			//throw new RuntimeException();
 			throw new TurmaException();
 		}
 		
 		//if( alunosMatriculados.size() >= 5 ) {
 		if( alunosMatriculados.size() >= config.getCapacidadeTurma() ) {
-			logger.info(bundle.getString("turma.ja.completa", aluno));
+			logger.info(bundle.getString("turma.ja.completa", aluno.getNome()));
 			//throw new RuntimeException();
 			throw new TurmaException();
 		}
@@ -44,10 +46,10 @@ public class Turma {
 		alunosMatriculados.add(aluno);
 		//System.out.println("Aluno matriculado com sucesso!");
 		//logger.info("Aluno matriculado com sucesso!");
-		logger.info(bundle.getString("matricula.sucesso", aluno));
+		logger.info(bundle.getString("matricula.sucesso", aluno.getNome()));
 	}
 
-	public boolean estaMatriculado(String aluno) {
+	public boolean estaMatriculado(Aluno aluno) {
 		return alunosMatriculados.contains(aluno);
 	}
 	
