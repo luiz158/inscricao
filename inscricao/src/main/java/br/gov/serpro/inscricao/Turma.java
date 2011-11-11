@@ -22,6 +22,10 @@ public class Turma {
 	private ResourceBundle bundle;
 	
 	public void matricular(String aluno) {
+		if( estaMatriculado(aluno) ) {
+			throw new RuntimeException();
+		}
+		
 		alunosMatriculados.add(aluno);
 		//System.out.println("Aluno matriculado com sucesso!");
 		//logger.info("Aluno matriculado com sucesso!");
