@@ -16,31 +16,31 @@ import br.gov.serpro.inscricao.exception.TurmaException;
 public class TurmaTest {
 	
 	@Inject
-	TurmaBC turma;
+	TurmaBC turmaBC;
 	
 	@Test
 	public void matricularAlunoComSucesso() {
 		//Turma turma = new Turma();
 		Aluno aluno = new Aluno("Santos Dumont");
-		turma.matricular(aluno);
-		Assert.assertTrue(turma.estaMatriculado(aluno));
+		turmaBC.matricular(aluno);
+		Assert.assertTrue(turmaBC.estaMatriculado(aluno));
 	}
 
 	//@Test(expected=RuntimeException.class)
 	@Test(expected=TurmaException.class)
 	public void falhaAoTentarMatricularAlunoDuplicado() {
 		Aluno aluno = new Aluno("Nome Duplicado");
-		turma.matricular(aluno);
-		turma.matricular(aluno);
+		turmaBC.matricular(aluno);
+		turmaBC.matricular(aluno);
 	}
 
 	//@Test(expected=RuntimeException.class)
 	@Test(expected=TurmaException.class)
 	public void falhaAoTentarMatricularAlunoNaTurmaCheia() {
 		for( int i = 1; i<=5 ; i++ ) {
-			turma.matricular(new Aluno("Aluno " + i));
+			turmaBC.matricular(new Aluno("Aluno " + i));
 		}
-		turma.matricular(new Aluno("Aluno 6"));
+		turmaBC.matricular(new Aluno("Aluno 6"));
 	}
 
 }

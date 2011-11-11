@@ -3,7 +3,6 @@ package br.gov.serpro.inscricao.business;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
 import org.slf4j.Logger;
 
@@ -14,6 +13,7 @@ import br.gov.frameworkdemoiselle.util.ResourceBundle;
 import br.gov.serpro.inscricao.config.InscricaoConfig;
 import br.gov.serpro.inscricao.entity.Aluno;
 import br.gov.serpro.inscricao.exception.TurmaException;
+import br.gov.serpro.inscricao.persistence.AlunoDAO;
 
 //@Controller   // para poder utilizar @ExceptionHandler
 @BusinessController   
@@ -31,8 +31,11 @@ public class TurmaBC {
 	@Inject
 	private InscricaoConfig config;
 	
+	//@Inject
+	//private EntityManager em;   // obs.: pode ser injectado em EM devido à extensão demoiselle-jpa
+	
 	@Inject
-	private EntityManager em;   // obs.: pode ser injectado em EM devido à extensão demoiselle-jpa
+	AlunoDAO alunoDAO;
 	
 	@Transactional
 	public void matricular(Aluno aluno) {
@@ -52,7 +55,8 @@ public class TurmaBC {
 		
 		//alunosMatriculados.add(aluno);
 		//em.getTransaction().begin();
-		em.persist(aluno);
+		//em.persist(aluno);
+		alunoDAO.insert(aluno);
 		//em.getTransaction().commit();
 		
 		//System.out.println("Aluno matriculado com sucesso!");
@@ -73,7 +77,8 @@ public class TurmaBC {
 	}
 	
 	public List<Aluno> obterAlunosMatriculados() {
-		return em.createQuery("select a from Aluno a").getResultList();
+		//return em.createQuery("select a from Aluno a").getResultList();
+		return alunoDAO.findAll();
 	}
 
 }
