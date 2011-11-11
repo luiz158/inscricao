@@ -23,8 +23,10 @@ public class TurmaTest {
 		Assert.assertTrue(turma.estaMatriculado("Santos Dumont"));
 	}
 
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void falhaAoTentarMatricularAlunoDuplicado() {
+		turma.matricular("Aluno Duplicado");
+		turma.matricular("Aluno Duplicado");
 	}
 
 	@Test
