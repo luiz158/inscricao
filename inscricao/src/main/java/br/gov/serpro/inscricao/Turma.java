@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 
 import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
 import br.gov.frameworkdemoiselle.stereotype.Controller;
+import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.ResourceBundle;
 import br.gov.serpro.inscricao.config.InscricaoConfig;
 import br.gov.serpro.inscricao.entity.Aluno;
@@ -33,6 +34,7 @@ public class Turma {
 	@Inject
 	private EntityManager em;   // obs.: pode ser injectado em EM devido à extensão demoiselle-jpa
 	
+	@Transactional
 	public void matricular(Aluno aluno) {
 		if( estaMatriculado(aluno) ) {
 			logger.info(bundle.getString("aluno.ja.matriculado", aluno.getNome()));
@@ -49,9 +51,9 @@ public class Turma {
 		}
 		
 		//alunosMatriculados.add(aluno);
-		em.getTransaction().begin();
+		//em.getTransaction().begin();
 		em.persist(aluno);
-		em.getTransaction().commit();
+		//em.getTransaction().commit();
 		
 		//System.out.println("Aluno matriculado com sucesso!");
 		//logger.info("Aluno matriculado com sucesso!");
