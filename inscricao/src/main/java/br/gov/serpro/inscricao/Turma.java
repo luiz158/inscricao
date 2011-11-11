@@ -2,6 +2,7 @@ package br.gov.serpro.inscricao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import javax.inject.Inject;
 
@@ -15,10 +16,14 @@ public class Turma {
 	@Inject
 	private Logger logger; // = LoggerFactory.getLogger(Turma.class);
 	
+	@Inject
+	private ResourceBundle bundle;
+	
 	public void matricular(String aluno) {
 		alunosMatriculados.add(aluno);
 		//System.out.println("Aluno matriculado com sucesso!");
-		logger.info("Aluno matriculado com sucesso!");
+		//logger.info("Aluno matriculado com sucesso!");
+		logger.info(bundle.getString("matricula.sucesso"));
 	}
 
 	public boolean estaMatriculado(String aluno) {
