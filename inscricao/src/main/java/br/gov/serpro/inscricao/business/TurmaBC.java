@@ -1,6 +1,5 @@
-package br.gov.serpro.inscricao;
+package br.gov.serpro.inscricao.business;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -9,15 +8,16 @@ import javax.persistence.EntityManager;
 import org.slf4j.Logger;
 
 import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
-import br.gov.frameworkdemoiselle.stereotype.Controller;
+import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.frameworkdemoiselle.util.ResourceBundle;
 import br.gov.serpro.inscricao.config.InscricaoConfig;
 import br.gov.serpro.inscricao.entity.Aluno;
 import br.gov.serpro.inscricao.exception.TurmaException;
 
-@Controller   // para poder utilizar @ExceptionHandler
-public class Turma {
+//@Controller   // para poder utilizar @ExceptionHandler
+@BusinessController   
+public class TurmaBC {
 
 	//private List<String> alunosMatriculados = new ArrayList<String>();
 	//private List<Aluno> alunosMatriculados = new ArrayList<Aluno>();
