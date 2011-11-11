@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.gov.frameworkdemoiselle.junit.DemoiselleRunner;
+import br.gov.serpro.inscricao.exception.TurmaException;
 
 @RunWith(DemoiselleRunner.class)
 public class TurmaTest {
@@ -23,13 +24,15 @@ public class TurmaTest {
 		Assert.assertTrue(turma.estaMatriculado("Santos Dumont"));
 	}
 
-	@Test(expected=RuntimeException.class)
+	//@Test(expected=RuntimeException.class)
+	@Test(expected=TurmaException.class)
 	public void falhaAoTentarMatricularAlunoDuplicado() {
 		turma.matricular("Aluno Duplicado");
 		turma.matricular("Aluno Duplicado");
 	}
 
-	@Test(expected=RuntimeException.class)
+	//@Test(expected=RuntimeException.class)
+	@Test(expected=TurmaException.class)
 	public void falhaAoTentarMatricularAlunoNaTurmaCheia() {
 		for( int i = 1; i<=5 ; i++ ) {
 			turma.matricular("Aluno " + i);
