@@ -1,6 +1,7 @@
 package br.gov.serpro.inscricao.security;
 
 import javax.enterprise.inject.Alternative;
+import javax.inject.Inject;
 
 import br.gov.frameworkdemoiselle.security.Authenticator;
 import br.gov.frameworkdemoiselle.security.User;
@@ -8,11 +9,21 @@ import br.gov.frameworkdemoiselle.security.User;
 @Alternative
 public class Autenticador implements Authenticator {
 
+	@Inject
+	Credenciais credenciais;
+	
 	@Override
 	public boolean authenticate() {
 		// TODO Auto-generated method stub
 		//return false;
-		return true;
+		//return true;
+		boolean autenticado = false;
+		
+		if( credenciais.getNome().equals("secretaira") && credenciais.getSenha().equals("segredo") ) {
+			autenticado = true;
+		}
+		
+		return autenticado;
 	}
 
 	@Override

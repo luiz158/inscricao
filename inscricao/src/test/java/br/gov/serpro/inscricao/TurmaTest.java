@@ -13,18 +13,24 @@ import br.gov.frameworkdemoiselle.security.SecurityContext;
 import br.gov.serpro.inscricao.business.TurmaBC;
 import br.gov.serpro.inscricao.entity.Aluno;
 import br.gov.serpro.inscricao.exception.TurmaException;
+import br.gov.serpro.inscricao.security.Credenciais;
 
 @RunWith(DemoiselleRunner.class)
 public class TurmaTest {
 	
 	@Inject
-	TurmaBC turmaBC;
+	private TurmaBC turmaBC;
 	
 	@Inject
-	SecurityContext securityContext;
+	private SecurityContext securityContext;
+	
+	@Inject
+	private Credenciais credenciais;
 	
 	@Before
 	public void setUp() {
+		credenciais.setNome("secretaria");
+		credenciais.setSenha("segredo");
 		securityContext.login();
 	}
 	
