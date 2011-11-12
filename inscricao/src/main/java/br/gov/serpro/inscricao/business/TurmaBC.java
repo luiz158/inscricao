@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 
 import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
+import br.gov.frameworkdemoiselle.message.MessageContext;
 import br.gov.frameworkdemoiselle.security.RequiredPermission;
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
@@ -27,6 +28,9 @@ public class TurmaBC {
 	
 	@Inject
 	private ResourceBundle bundle;
+	
+	@Inject
+	private MessageContext messageContext;
 	
 	@Inject
 	private InscricaoConfig config;
@@ -63,7 +67,12 @@ public class TurmaBC {
 		
 		//System.out.println("Aluno matriculado com sucesso!");
 		//logger.info("Aluno matriculado com sucesso!");
-		logger.info(bundle.getString("matricula.sucesso", aluno.getNome()));
+		//logger.info(bundle.getString("matricula.sucesso", aluno.getNome()));
+		
+		String mensagem = bundle.getString("matricula.sucesso", aluno.getNome());
+		logger.info(mensagem);
+		
+		messageContext.add(mensagem);
 	}
 	
 	@RequiredPermission(resource="turma", operation="consultar")

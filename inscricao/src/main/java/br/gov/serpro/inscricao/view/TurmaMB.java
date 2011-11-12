@@ -16,14 +16,14 @@ public class TurmaMB {
 	@Inject
 	TurmaBC turmaBC;
 	
-	@Inject
-	FacesContext facesContext;
+	//@Inject
+	//FacesContext facesContext;
 	
 	private String nomeAluno;
 	
 	public void matricular() {
 		turmaBC.matricular(new Aluno(nomeAluno));
-		facesContext.addMessage("sucesso", new FacesMessage("Cadastro realizado com sucesso"));
+		//facesContext.addMessage("sucesso", new FacesMessage("Cadastro realizado com sucesso"));
 	}
 	
 	public List<Aluno> getAlunosMatriculados() {
