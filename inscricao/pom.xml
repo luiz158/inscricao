@@ -23,7 +23,15 @@
 		<dependency>
 			<groupId>br.gov.frameworkdemoiselle</groupId>
 			<artifactId>demoiselle-jpa</artifactId>
+<!--
 			<scope>compile</scope>
+-->
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>      
+			</exclusions>
 		</dependency>
  		
 		<dependency>
