@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 
+import br.gov.frameworkdemoiselle.annotation.Startup;
 import br.gov.frameworkdemoiselle.exception.ExceptionHandler;
 import br.gov.frameworkdemoiselle.message.MessageContext;
 import br.gov.frameworkdemoiselle.security.RequiredPermission;
@@ -93,4 +94,8 @@ public class TurmaBC {
 		return alunoBC.findAll();
 	}
 
+	@Startup
+	public void iniciar() {
+		logger.info("Iniciando aplicativo INSCRICAO....");
+	}
 }
