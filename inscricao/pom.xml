@@ -23,6 +23,7 @@
 		<dependency>
 			<groupId>br.gov.frameworkdemoiselle</groupId>
 			<artifactId>demoiselle-jpa</artifactId>
+			<scope>compile</scope>
 		</dependency>
  		
 		<dependency>
