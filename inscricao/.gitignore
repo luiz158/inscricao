@@ -1,0 +1,14 @@
+.ant-targets-*
+build
+dist
+bin
+exploded-archives
+test-build
+lib
+classes
+obf
+target
+.classpath
+.project
+.settings
+.svn
