@@ -6,7 +6,9 @@ import javax.enterprise.context.SessionScoped;
 
 @SessionScoped
 public class Credenciais implements Serializable {
-	
+
+	private static final long serialVersionUID = -883192392124215756L;
+
 	private String nome;
 	private String senha;
 	
