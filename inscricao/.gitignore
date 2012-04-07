@@ -12,3 +12,8 @@ target
 .project
 .settings
 .svn
+/.classpath
+/.project
+/.settings
+/.svn
+lixo
